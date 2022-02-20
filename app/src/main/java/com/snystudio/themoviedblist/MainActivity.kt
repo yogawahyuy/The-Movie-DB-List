@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         recycler_view.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recyclerViewMainAdapter= RecyclerViewMainAdapter()
         recycler_view.adapter=recyclerViewMainAdapter
-
         recycler_view_freewatch.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recyclerViewUpcomingAdapter=RecyclerViewUpcomingAdapter()
         recycler_view_freewatch.adapter=recyclerViewUpcomingAdapter

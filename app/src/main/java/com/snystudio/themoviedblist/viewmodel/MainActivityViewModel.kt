@@ -12,6 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(private val repository: RetrofitRepository) :ViewModel() {
 
+    private val api_key="419b81ff6596ca606be669657bc644b3"
     var liveDataList:MutableLiveData<List<DiscoverMovie>>
     var liveDataListUpcoming:MutableLiveData<List<UpcomingMovie>>
     init {
@@ -23,13 +24,13 @@ class MainActivityViewModel @Inject constructor(private val repository: Retrofit
         return liveDataList
     }
     fun loadListOfData(){
-        repository.makeApiCall("419b81ff6596ca606be669657bc644b3",liveDataList)
+        repository.makeApiCall(api_key,liveDataList)
     }
 
     fun getLiveDataUpcomingObserver():MutableLiveData<List<UpcomingMovie>>{
         return liveDataListUpcoming
     }
     fun loadListOfUpcomingData(){
-        repository.makeApiCallUpcoming("419b81ff6596ca606be669657bc644b3",liveDataListUpcoming)
+        repository.makeApiCallUpcoming(api_key,liveDataListUpcoming)
     }
 }

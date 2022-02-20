@@ -1,5 +1,6 @@
 package com.snystudio.themoviedblist.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.snystudio.themoviedblist.R
 import com.snystudio.themoviedblist.model.UpcomingMovie
+import com.snystudio.themoviedblist.ui.DetailFilmActivity
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
 class RecyclerViewUpcomingAdapter: RecyclerView.Adapter<RecyclerViewUpcomingAdapter.MyViewHolders>() {
@@ -26,6 +28,11 @@ class RecyclerViewUpcomingAdapter: RecyclerView.Adapter<RecyclerViewUpcomingAdap
 
     override fun onBindViewHolder(holder: RecyclerViewUpcomingAdapter.MyViewHolders, position: Int) {
         holder.bind(listDataUpcoming?.get(position)!!)
+        holder.itemView.setOnClickListener {
+            val intent= Intent(holder.itemView.context, DetailFilmActivity::class.java)
+            intent.putExtra("movie_id",listDataUpcoming?.get(position)!!.id)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

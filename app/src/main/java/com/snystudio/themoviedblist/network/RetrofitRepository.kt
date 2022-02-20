@@ -2,10 +2,7 @@ package com.snystudio.themoviedblist.network
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.snystudio.themoviedblist.model.DiscoverMovie
-import com.snystudio.themoviedblist.model.DiscoverMovieList
-import com.snystudio.themoviedblist.model.UpComingMovieList
-import com.snystudio.themoviedblist.model.UpcomingMovie
+import com.snystudio.themoviedblist.model.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,6 +44,21 @@ class RetrofitRepository @Inject constructor(private val retrofitServiceInstance
 
             override fun onFailure(call: Call<UpComingMovieList>, t: Throwable) {
                 liveDataList.postValue(null)
+            }
+
+        })
+    }
+    fun makeApiCallDetailMovie(movie_id:Int,apikey:String,liveData: MutableLiveData<DetailMovie>){
+        val call:Call<DetailMovie> = retrofitServiceInstance.getDetailMovie(movie_id,apikey)
+
+        call.enqueue(object : Callback<DetailMovie>{
+            override fun onResponse(call: Call<DetailMovie>, response: Response<DetailMovie>) {
+                liveData.postValue(response.body())
+                Log.d("retrofitrepo", "onResponse: "+response.body())
+            }
+
+            override fun onFailure(call: Call<DetailMovie>, t: Throwable) {
+                liveData.postValue(null)
             }
 
         })
