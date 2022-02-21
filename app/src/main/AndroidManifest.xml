@@ -14,7 +14,17 @@
         android:theme="@style/Theme.TheMovieDBList">
         <activity
             android:name=".ui.DetailFilmActivity"
-            android:exported="false" />
+            android:exported="true"
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="moviedb" android:host="deeplink"/>
+                <data android:scheme="http" android:host="www.mymoviedb.com"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

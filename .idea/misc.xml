@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/ProjectAndroid/TheMovieDBList/app/src/main/res/drawable/shape_gradien.xml" value="0.1105" />
         <entry key="..\:/ProjectAndroid/TheMovieDBList/app/src/main/res/drawable/shape_vote.xml" value="0.1105" />
-        <entry key="..\:/ProjectAndroid/TheMovieDBList/app/src/main/res/layout/activity_detail_film.xml" value="0.2" />
+        <entry key="..\:/ProjectAndroid/TheMovieDBList/app/src/main/res/layout/activity_detail_film.xml" value="0.25" />
         <entry key="..\:/ProjectAndroid/TheMovieDBList/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/ProjectAndroid/TheMovieDBList/app/src/main/res/layout/recycler_row.xml" value="0.1" />
       </map>

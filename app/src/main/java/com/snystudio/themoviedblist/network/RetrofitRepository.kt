@@ -63,4 +63,21 @@ class RetrofitRepository @Inject constructor(private val retrofitServiceInstance
 
         })
     }
+    fun makeApiCallVideosMovie(movie_id: Int,apikey: String,liveData: MutableLiveData<List<VideosMovie>>){
+        val call:Call<VideosMovieList> = retrofitServiceInstance.getVideosMovie(movie_id,apikey)
+
+        call.enqueue(object : Callback<VideosMovieList>{
+            override fun onResponse(
+                call: Call<VideosMovieList>,
+                response: Response<VideosMovieList>
+            ) {
+                liveData.postValue(response.body()?.results)
+            }
+
+            override fun onFailure(call: Call<VideosMovieList>, t: Throwable) {
+                liveData.postValue(null)
+            }
+        })
+    }
+
 }

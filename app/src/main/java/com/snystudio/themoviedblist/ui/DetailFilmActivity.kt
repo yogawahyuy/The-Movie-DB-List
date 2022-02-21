@@ -1,7 +1,11 @@
 package com.snystudio.themoviedblist.ui
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -33,5 +37,24 @@ class DetailFilmActivity : AppCompatActivity() {
             }
         })
         viewModel.loadOfData(intent.getIntExtra("movie_id",0))
+
+        viewModel.getDataObserverVideos().observe(this, Observer {
+            if (it!=null){
+               for (i in it.indices){
+                   if (it.get(i).official==true&&it.get(i).type=="Trailer"){
+                       val key=it.get(i).key
+                       btn_trailer.setOnClickListener {
+                           val intent=Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://"+key))
+                           try {
+                               startActivity(intent)
+                           }catch (e: ActivityNotFoundException){
+                               Toast.makeText(this, "Instal Apllikasi Youtube", Toast.LENGTH_SHORT).show()
+                           }
+                       }
+                   }
+               }
+            }
+        })
+        viewModel.loadOfDataVideos(intent.getIntExtra("movie_id",0))
     }
 }

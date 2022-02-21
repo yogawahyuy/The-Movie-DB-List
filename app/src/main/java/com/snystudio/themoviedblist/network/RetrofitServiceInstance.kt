@@ -1,9 +1,6 @@
 package com.snystudio.themoviedblist.network
 
-import com.snystudio.themoviedblist.model.DetailMovie
-import com.snystudio.themoviedblist.model.DiscoverMovie
-import com.snystudio.themoviedblist.model.DiscoverMovieList
-import com.snystudio.themoviedblist.model.UpComingMovieList
+import com.snystudio.themoviedblist.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,4 +15,9 @@ interface RetrofitServiceInstance {
 
     @GET("movie/{movie_id}")
     fun getDetailMovie(@Path("movie_id") movie_id:Int,@Query("api_key")api_key : String):Call<DetailMovie>
+
+    @GET("movie/{movie_id}/videos")
+    fun getVideosMovie(@Path("movie_id")movie_id: Int,@Query("api_key")api_key: String):Call<VideosMovieList>
+
+
 }
