@@ -79,5 +79,36 @@ class RetrofitRepository @Inject constructor(private val retrofitServiceInstance
             }
         })
     }
+    fun makeApiCallRekomenMovie(apikey: String,liveData:MutableLiveData<List<RekomendMovie>>){
+        val call : Call<RekomendMovieList> = retrofitServiceInstance.getRekomenMovie(apikey)
+        call.enqueue(object : Callback<RekomendMovieList>{
+            override fun onResponse(
+                call: Call<RekomendMovieList>,
+                response: Response<RekomendMovieList>
+            ) {
+                liveData.postValue(response.body()?.results)
+            }
 
+            override fun onFailure(call: Call<RekomendMovieList>, t: Throwable) {
+                liveData.postValue(null)
+            }
+
+        })
+    }
+    fun makeApiCallSearchMovie(apikey: String,query:String,liveDataList: MutableLiveData<List<DiscoverMovie>>){
+        val call: Call<DiscoverMovieList> = retrofitServiceInstance.getSearchMovie(apikey,query)
+        call.enqueue(object : Callback<DiscoverMovieList>{
+            override fun onResponse(
+                call: Call<DiscoverMovieList>,
+                response: Response<DiscoverMovieList>
+            ) {
+                liveDataList.postValue(response.body()?.results)
+            }
+
+            override fun onFailure(call: Call<DiscoverMovieList>, t: Throwable) {
+                liveDataList.postValue(null)
+            }
+
+        })
+    }
 }

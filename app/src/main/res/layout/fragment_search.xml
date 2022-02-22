@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.SearchFragment">
+
+  <LinearLayout
+      android:id="@+id/lin_search_box"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp">
+      <TextView
+          android:id="@+id/tv_title_carifilm"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Cari Filmmu"
+          android:textSize="24sp"
+          android:textColor="@color/black"
+          android:fontFamily="@font/bookmanoldstyle"/>
+      <EditText
+          android:id="@+id/edtText_cari_film"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Cari Disini"/>
+      <Button
+          android:id="@+id/btn_cari_film"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Search"/>
+
+  </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_search_box_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+        <TextView
+            android:id="@+id/tv_title_hasil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rekomendasi Film"
+            android:textSize="24sp"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:textStyle="bold"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search_fragmen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hasil_search_fragmen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

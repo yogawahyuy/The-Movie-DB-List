@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp">
+    <ImageView
+        android:id="@+id/poster_image"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/main_top_bg"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:id="@+id/original_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Spiderman No home"
+        android:fontFamily="@font/bookmanoldstyle"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:autoSizeTextType="uniform"/>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/release_date"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="2020"
+        android:fontFamily="@font/bookmanoldstyle"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        android:textStyle="normal"
+        android:autoSizeTextType="uniform"
+        />
+
+</LinearLayout>
