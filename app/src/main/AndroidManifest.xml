@@ -3,6 +3,8 @@
     package="com.snystudio.themoviedblist">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".BaseApplication"
@@ -12,6 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheMovieDBList">
+        <activity
+            android:name=".ui.NearbyBioscopActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB1oi8GWu1VFthN1qe45lSq8uTZgmcEt1w" />
+
         <activity
             android:name=".ui.ListFilmActivity"
             android:exported="false" />

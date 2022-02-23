@@ -20,6 +20,10 @@ class DetailFilmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_film)
         initViewModel()
+        btn_bioskop.setOnClickListener {
+            val intent=Intent(this,NearbyBioscopActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun initViewModel(){

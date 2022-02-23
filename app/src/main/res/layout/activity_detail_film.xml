@@ -165,6 +165,15 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintStart_toStartOf="@id/tvDescriptionValue"
             app:layout_constraintTop_toBottomOf="@id/tvDescriptionValue"/>
+        <Button
+            android:id="@+id/btn_bioskop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cari Bisokop Terdekat"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="@id/btn_trailer"
+            app:layout_constraintTop_toBottomOf="@id/btn_trailer"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
