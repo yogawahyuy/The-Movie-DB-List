@@ -1,6 +1,7 @@
 package com.snystudio.themoviedblist.network
 
 import android.util.Log
+import androidx.appcompat.view.menu.ListMenuItemView
 import androidx.lifecycle.MutableLiveData
 import com.snystudio.themoviedblist.model.*
 import retrofit2.Call
@@ -97,6 +98,38 @@ class RetrofitRepository @Inject constructor(private val retrofitServiceInstance
     }
     fun makeApiCallSearchMovie(apikey: String,query:String,liveDataList: MutableLiveData<List<DiscoverMovie>>){
         val call: Call<DiscoverMovieList> = retrofitServiceInstance.getSearchMovie(apikey,query)
+        call.enqueue(object : Callback<DiscoverMovieList>{
+            override fun onResponse(
+                call: Call<DiscoverMovieList>,
+                response: Response<DiscoverMovieList>
+            ) {
+                liveDataList.postValue(response.body()?.results)
+            }
+
+            override fun onFailure(call: Call<DiscoverMovieList>, t: Throwable) {
+                liveDataList.postValue(null)
+            }
+
+        })
+    }
+    fun makeApiCallGenreMovie(apikey: String,liveData:MutableLiveData<List<GenreMovie>>){
+        val call:Call<GenreMovieList> = retrofitServiceInstance.getGenreMovie(apikey)
+        call.enqueue(object : Callback<GenreMovieList>{
+            override fun onResponse(
+                call: Call<GenreMovieList>,
+                response: Response<GenreMovieList>
+            ) {
+                liveData.postValue(response.body()?.genres)
+            }
+
+            override fun onFailure(call: Call<GenreMovieList>, t: Throwable) {
+                liveData.postValue(null)
+            }
+
+        })
+    }
+    fun makeApiCall(apikey: String,id_genre:Int,liveDataList:MutableLiveData<List<DiscoverMovie>>){
+        val call:Call<DiscoverMovieList> = retrofitServiceInstance.getGenreListMovie(apikey,id_genre)
         call.enqueue(object : Callback<DiscoverMovieList>{
             override fun onResponse(
                 call: Call<DiscoverMovieList>,

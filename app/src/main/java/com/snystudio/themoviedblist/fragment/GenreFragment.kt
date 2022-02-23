@@ -5,7 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.snystudio.themoviedblist.R
+import com.snystudio.themoviedblist.adapter.RecyclerViewGenreMovieAdapter
+import com.snystudio.themoviedblist.viewmodel.GenreViewModel
+import com.snystudio.themoviedblist.viewmodel.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,44 +25,37 @@ private const val ARG_PARAM2 = "param2"
  * Use the [GenreFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class GenreFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    lateinit var recyclerViewGenreMovieAdapter: RecyclerViewGenreMovieAdapter
+    lateinit var recyclerView:RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_genre, container, false)
+        val view= inflater.inflate(R.layout.fragment_genre, container, false)
+        initRecyclerView(view)
+        initViewModel()
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GenreFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GenreFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun initRecyclerView(view:View){
+        recyclerView=view.findViewById(R.id.rv_genre)
+        recyclerView.layoutManager= GridLayoutManager(requireContext(),2)
+        recyclerViewGenreMovieAdapter= RecyclerViewGenreMovieAdapter()
+        recyclerView.adapter=recyclerViewGenreMovieAdapter
     }
+    fun initViewModel(){
+        val viewModel = ViewModelProvider(requireActivity()).get(GenreViewModel::class.java)
+        viewModel.getDataObserver().observe(requireActivity(), Observer {
+            if (it!=null) {
+                recyclerViewGenreMovieAdapter.setListData(it)
+                recyclerViewGenreMovieAdapter.notifyDataSetChanged()
+            }
+        })
+        viewModel.getLoadDataGenre()
+    }
+
 }
