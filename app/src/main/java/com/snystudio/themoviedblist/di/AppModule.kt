@@ -15,6 +15,7 @@ import javax.inject.Singleton
 object AppModule {
     val baseURL="https://api.themoviedb.org/3/"
 
+
     @Singleton
     @Provides
     fun getRetrofitServiceInstance(retrofit: Retrofit):RetrofitServiceInstance{
@@ -30,4 +31,5 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
 }

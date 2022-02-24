@@ -32,6 +32,9 @@ interface RetrofitServiceInstance {
     @GET("discover/movie")
     fun getGenreListMovie(@Query("api_key")api_key: String,@Query("with_genres")id_genre:Int):Call<DiscoverMovieList>
 
+    @GET("maps/api/place/nearbysearch/json")
+    fun getNearbyPlace(@Query("location") location:Double,@Query("radius")radius:Int,@Query("type")type:String,@Query("key")api_key: String)
+
 
 
 }
