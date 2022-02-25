@@ -2,11 +2,7 @@ package com.snystudio.themoviedblist.model
 
 import com.google.gson.annotations.SerializedName
 
-data class NearbyPlaceModel(@SerializedName("html_attributions" ) var htmlAttributions : ArrayList<String>  = arrayListOf(),
-                            @SerializedName("next_page_token"   ) var nextPageToken    : String?            = null,
-                            @SerializedName("results"           ) var results          : ArrayList<Results> = arrayListOf(),
-                            @SerializedName("status"            ) var status           : String?            = null)
-
+data class NearbyPlaceModel(var results:List<Results>)
 
 data class Location (
 
