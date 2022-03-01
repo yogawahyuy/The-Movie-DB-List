@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.snystudio.themoviedblist.R
@@ -29,23 +30,33 @@ private const val ARG_PARAM2 = "param2"
  */
 class SearchFragment : Fragment() {
 
+    private val args: SearchFragmentArgs by navArgs()
     lateinit var recyclerViewRekomenMovieAdapter: RecyclerViewRekomenMovieAdapter
     lateinit var recyclerViewSearchMovieAdapter: RecyclerViewSearchMovieAdapter
     lateinit var recyclerView: RecyclerView
     lateinit var recyclerViewSearch: RecyclerView
+    lateinit var tvTitleHasil:TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val searchDeeplink=args.search
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         val etCariFilm=view.findViewById<EditText>(R.id.edtText_cari_film)
         val btnCariFilm=view.findViewById<Button>(R.id.btn_cari_film)
-        val tvTitleHasil=view.findViewById<TextView>(R.id.tv_title_hasil)
+        tvTitleHasil=view.findViewById(R.id.tv_title_hasil)
         recyclerView=view.findViewById(R.id.rv_search_fragmen)
         recyclerViewSearch=view.findViewById(R.id.rv_hasil_search_fragmen)
+        etCariFilm.setText(searchDeeplink)
         initRecyclerView()
         initViewModel()
+        if (searchDeeplink!=null) {
+            recyclerView.visibility=View.GONE
+            recyclerViewSearch.visibility=View.VISIBLE
+            initRecyclerViewSearch()
+            initViewModelSearch(searchDeeplink)
+        }
         btnCariFilm.setOnClickListener {
             recyclerView.visibility=View.GONE
             recyclerViewSearch.visibility=View.VISIBLE
@@ -80,6 +91,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun initViewModelSearch(query:String){
+        tvTitleHasil.text="Hasil Pencarian"
         val viewModel = ViewModelProvider(requireActivity()).get(SearchViewModel::class.java)
         viewModel.getDataObserverSearch().observe(requireActivity(), Observer {
             if (it!=null){
