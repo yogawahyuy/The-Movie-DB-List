@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "561851889275",
+    "project_id": "citric-hawk-342207",
+    "storage_bucket": "citric-hawk-342207.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561851889275:android:b206aa7588c821862714de",
+        "android_client_info": {
+          "package_name": "com.snystudio.themoviedblist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561851889275-rmpv1hgubuagq028nqh7jh7qo38c7moh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi7ALYpKassmPHPsGu3_WFgAd65c_W73g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561851889275-rmpv1hgubuagq028nqh7jh7qo38c7moh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

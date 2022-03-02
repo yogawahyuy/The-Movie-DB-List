@@ -29,7 +29,7 @@
             app:nullable="true" />
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="example.com/search/{search}" />
+            app:uri="http://www.example.com/search/{search}" />
     </fragment>
     <fragment
         android:id="@+id/genreFragment"
