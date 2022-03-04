@@ -44,5 +44,13 @@
         android:id="@+id/detailFilmActivity"
         android:name="com.snystudio.themoviedblist.ui.DetailFilmActivity"
         android:label="activity_detail_film"
-        tools:layout="@layout/activity_detail_film" />
+        tools:layout="@layout/activity_detail_film">
+        <argument
+            android:name="idMovie"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <deepLink
+            android:id="@+id/deepLink2"
+            app:uri="http://www.example.com/movie-detail/{idMovie}" />
+    </activity>
 </navigation>

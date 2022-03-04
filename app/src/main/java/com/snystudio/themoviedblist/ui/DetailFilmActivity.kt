@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
 import com.snystudio.themoviedblist.R
 import com.snystudio.themoviedblist.viewmodel.DetailMovieViewModel
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_detail_film.*
 @AndroidEntryPoint
 class DetailFilmActivity : AppCompatActivity() {
 
+    private val args:DetailFilmActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_film)
@@ -28,6 +30,7 @@ class DetailFilmActivity : AppCompatActivity() {
 
     fun initViewModel(){
         val intent=intent
+        val intentMovieId=intent.getIntExtra("movie_id",0);
         val viewModel=ViewModelProvider(this).get(DetailMovieViewModel::class.java)
         viewModel.getDataObsever().observe(this, Observer {
             if (it!=null){
@@ -40,7 +43,12 @@ class DetailFilmActivity : AppCompatActivity() {
                 tvDescriptionValue.text=it.overview
             }
         })
-        viewModel.loadOfData(intent.getIntExtra("movie_id",0))
+        if (intentMovieId==0){
+            val deepLinkMovieId=args.idMovie
+            viewModel.loadOfData(deepLinkMovieId)
+        }else {
+            viewModel.loadOfData(intentMovieId)
+        }
 
         viewModel.getDataObserverVideos().observe(this, Observer {
             if (it!=null){
