@@ -1,10 +1,12 @@
 package com.snystudio.themoviedblist.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.snystudio.themoviedblist.R
 import com.snystudio.themoviedblist.adapter.RecyclerViewMainAdapter
 import com.snystudio.themoviedblist.adapter.RecyclerViewUpcomingAdapter
+import com.snystudio.themoviedblist.ui.PagingListFilmActivity
 import com.snystudio.themoviedblist.viewmodel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -41,6 +44,10 @@ class MainFragment : Fragment() {
         initRecyclerView(view)
         initViewModel()
         initViewModelUpcoming()
+        val lsPopular=view.findViewById<TextView>(R.id.tv_liatselengkapnya_popular)
+        lsPopular.setOnClickListener {
+            startActivity(Intent(requireContext(),PagingListFilmActivity::class.java))
+        }
         return view
     }
 

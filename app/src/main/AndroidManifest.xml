@@ -51,7 +51,10 @@ package="com.snystudio.themoviedblist">
         </intent-filter>
         <nav-graph android:value="@navigation/navigation" />
     </activity>
-
+    <activity
+        android:name="com.snystudio.themoviedblist.ui.PagingListFilmActivity"
+        android:exported="false"
+        />
     <service
         android:name=".firebase.FirebaseMessageRecevier"
         android:exported="false">
