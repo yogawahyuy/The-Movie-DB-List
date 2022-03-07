@@ -144,4 +144,7 @@ class RetrofitRepository @Inject constructor(private val retrofitServiceInstance
 
         })
     }
+    fun makeApiCallPopularPaging(apikey: String,liveDataList: MutableLiveData<List<DiscoverMovie>>){
+
+    }
 }

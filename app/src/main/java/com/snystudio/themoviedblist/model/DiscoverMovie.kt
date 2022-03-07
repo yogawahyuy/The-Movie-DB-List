@@ -2,7 +2,7 @@ package com.snystudio.themoviedblist.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DiscoverMovieList(val results:List<DiscoverMovie>)
+data class DiscoverMovieList(val page : Int,val results:List<DiscoverMovie>)
 data class DiscoverMovie(@SerializedName("adult"             ) var adult            : Boolean?       = null,
                          @SerializedName("backdrop_path"     ) var backdropPath     : String?        = null,
                          @SerializedName("genre_ids"         ) var genreIds         : ArrayList<Int> = arrayListOf(),
