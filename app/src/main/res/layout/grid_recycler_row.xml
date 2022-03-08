@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+    <variable
+        name="pagingUiState"
+        type="com.snystudio.themoviedblist.model.PagingListUiState" />
+</data>
+<LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -11,12 +20,13 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:src="@drawable/main_top_bg"
+        imageUrl="@{pagingUiState.posterPath}"
         android:scaleType="fitXY"/>
     <TextView
         android:id="@+id/original_title"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Spiderman No home"
+        android:text="@{pagingUiState.originalTitle}"
         android:fontFamily="@font/bookmanoldstyle"
         android:textSize="16sp"
         android:layout_marginTop="8dp"
@@ -36,3 +46,4 @@
         />
 
 </LinearLayout>
+</layout>

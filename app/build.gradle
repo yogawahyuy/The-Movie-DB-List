@@ -20,7 +20,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures {
+        dataBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -76,4 +78,9 @@ dependencies {
     //coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+
+    //ktx
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+    implementation "androidx.activity:activity-ktx:1.4.0"
 }

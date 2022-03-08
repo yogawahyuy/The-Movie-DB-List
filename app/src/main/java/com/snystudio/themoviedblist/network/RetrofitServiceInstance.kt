@@ -33,7 +33,7 @@ interface RetrofitServiceInstance {
     fun getGenreListMovie(@Query("api_key")api_key: String,@Query("with_genres")id_genre:Int):Call<DiscoverMovieList>
 
     @GET("discover/movie")
-    fun getDiscoverMoviePaging(@Query("api_key") api_key:String,@Query("page") page:Int):DiscoverMovieList
+    suspend fun getDiscoverMoviePaging(@Query("api_key") api_key:String,@Query("page") page:Int):DiscoverMovieList
 
 
 

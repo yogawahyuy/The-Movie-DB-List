@@ -8,7 +8,9 @@ import javax.inject.Inject
 @Suppress("UNCHECKED_CAST")
 class PagingListFilmViewModelFactory @Inject constructor(private val retrofitServiceInstance1: RetrofitServiceInstance):ViewModelProvider.NewInstanceFactory() {
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return PagingListFilmViewModel(retrofitServiceInstance1) as T
-    }
+//    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+//        //return PagingListFilmViewModel(retrofitServiceInstance1) as T
+//
+//
+//    }
 }
