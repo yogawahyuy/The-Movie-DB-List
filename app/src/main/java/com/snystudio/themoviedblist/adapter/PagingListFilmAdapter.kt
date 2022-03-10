@@ -28,17 +28,6 @@ class PagingListFilmAdapter @Inject constructor() :PagingDataAdapter<PagingListU
         }
     }
 
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.itemView.original_title.text=getItem(position)?.originalTitle
-//        Glide.with(holder.itemView.poster_image)
-//            .load("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"+getItem(position)?.posterPath)
-//            .into(holder.itemView.poster_image)
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//       return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.grid_recycler_row,parent,false))
-//    }
-
     object DataDifferentiator: DiffUtil.ItemCallback<PagingListUiState>(){
         override fun areItemsTheSame(
             oldItem: PagingListUiState,

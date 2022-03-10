@@ -1,5 +1,6 @@
 package com.snystudio.themoviedblist.network
 
+import com.snystudio.themoviedblist.db.home.HomeMovie
 import com.snystudio.themoviedblist.model.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,6 +36,7 @@ interface RetrofitServiceInstance {
     @GET("discover/movie")
     suspend fun getDiscoverMoviePaging(@Query("api_key") api_key:String,@Query("page") page:Int):DiscoverMovieList
 
-
+    @GET("discover/movie")
+    suspend fun getDiscoverMovieRoom(@Query("api_key") api_key:String):List<HomeMovie>
 
 }

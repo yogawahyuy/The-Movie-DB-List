@@ -1,6 +1,10 @@
 package com.snystudio.themoviedblist.di
 
+import android.app.Application
 import android.util.Log
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.snystudio.themoviedblist.db.home.HomeMovieDatabase
 import com.snystudio.themoviedblist.network.MapsServiceInstance
 import com.snystudio.themoviedblist.network.RetrofitServiceInstance
 import dagger.Module
@@ -17,29 +21,26 @@ import javax.inject.Singleton
 object AppModule {
     val baseURL="https://api.themoviedb.org/3/"
 
-
-    @Singleton
     @Provides
-    fun getRetrofitServiceInstance(@Named("retro") retrofit: Retrofit):RetrofitServiceInstance{
-        return retrofit.create(RetrofitServiceInstance::class.java)
-
-    }
-
     @Singleton
+    fun getRetrofitServiceInstance(@Named("retro") retrofit: Retrofit):RetrofitServiceInstance =
+         retrofit.create(RetrofitServiceInstance::class.java)
+
+
     @Provides
+    @Singleton
     @Named("retro")
-    fun getRetroInstance():Retrofit{
-        return Retrofit.Builder()
+    fun getRetroInstance():Retrofit =
+         Retrofit.Builder()
             .baseUrl(baseURL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
+
 
     val baseURLMaps="https://maps.googleapis.com/"
 
     @Singleton
     @Provides
-
     fun getMapsInstance(@Named("maps")retrofit2: Retrofit): MapsServiceInstance {
         return retrofit2.create(MapsServiceInstance::class.java)
     }
@@ -53,4 +54,10 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app:Application):HomeMovieDatabase=
+        Room.databaseBuilder(app,HomeMovieDatabase::class.java,"homemovie_database")
+            .build()
 }
